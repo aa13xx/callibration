@@ -70,7 +70,7 @@ plt.fill_between(x = df_openmc.energy, y1 = df_openmc.intensity, y2 = baseline_v
         color = "crimson", alpha = 0.1)
 
 plt.xlim(peak_left_win_data, peak_right_win_data)
-plt.ylim(1e1,1e4)
+plt.ylim(1e1,1e5)
 plt.xlabel('Energy [keV]')
 plt.ylabel('Intensity')
 legend_elements = [#Patch(facecolor='steelblue', alpha = 1, label='data'),
