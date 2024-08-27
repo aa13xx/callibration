@@ -20,7 +20,7 @@ plt.figure(2)
 #plt.vlines(x=1112.076, color="red", ls =':', label="1112 kev", ymin = 0, ymax=1e6)
 #plt.vlines(x=1408.013, color="red", ls =':', label="1408 kev", ymin = 0, ymax=1e6)
 
-plt.semilogy(df_openmc.energy, df_openmc.intensity, label="original simulation", color="crimson", alpha=0.8)
+plt.semilogy(df_openmc.energy, df_openmc.intensity, label="original simulation", color="black", alpha=0.8)
 #plt.semilogy(df_data.energy, df_data.intensity, label="experimental", color="steelblue", alpha=0.8)
 plt.semilogy(df_openmc.energy, renorm_broadened_spectrum, label="post processed simulation", color="crimson", alpha=0.8)
 
@@ -63,13 +63,13 @@ plt.fill_between(x = df_data.energy, y1 = df_data.intensity, y2 = baseline_val_d
         color = "steelblue", alpha = 0.1)
 '''
 
-plt.semilogy(df_openmc.energy, df_openmc.intensity, alpha=0.3, label="simulation", color="crimson")
+plt.semilogy(df_openmc.energy, df_openmc.intensity, alpha=0.3, label="simulation", color="black")
 plt.vlines(x=peak_left_openmc, color="crimson", alpha= 1, ls =':', ymin = 0, ymax=1e6)
 plt.vlines(x=peak_right_openmc, color="crimson", alpha= 1, ls =':', ymin = 0, ymax=1e6)
 plt.hlines(y=baseline_val_openmc, color="crimson", alpha= 0.5, ls =':', xmin = peak_left_win_data, xmax=peak_right_win_data)
 plt.fill_between(x = df_openmc.energy, y1 = df_openmc.intensity, y2 = baseline_val_openmc,
         where = (peak_left_openmc <= df_openmc.energy)&(df_openmc.energy <= peak_right_openmc),
-        color = "crimson", alpha = 0.1)
+        color = "black", alpha = 0.1)
 
 plt.semilogy(df_openmc.energy, renorm_broadened_spectrum, alpha=0.8, label="processed simulation", color="crimson")
 #plt.vlines(x=peak_left_openmc, color="crimson", alpha= 1, ls =':', ymin = 0, ymax=1e6)
@@ -77,7 +77,7 @@ plt.semilogy(df_openmc.energy, renorm_broadened_spectrum, alpha=0.8, label="proc
 #plt.hlines(y=baseline_val_openmc, color="crimson", alpha= 0.5, ls =':', xmin = peak_left_win_data, xmax=peak_right_win_data)
 plt.fill_between(x = df_openmc.energy, y1 = renorm_broadened_spectrum, y2 = baseline_val_openmc,
         where = (peak_left_openmc <= df_openmc.energy)&(df_openmc.energy <= peak_right_openmc),
-        color = "crimson", alpha = 0.2)
+        color = "crimson", alpha = 0.1)
 
 plt.xlim(peak_left_win_data, peak_right_win_data)
 plt.ylim(1e1,1e5)
@@ -87,8 +87,8 @@ legend_elements = [#Patch(facecolor='steelblue', alpha = 1, label='data'),
                   #Patch(facecolor='steelblue', alpha = 0.2, label='background $=' + str(sci_notation(baseline_val_data,3)) + '$'),
                    #Patch(facecolor='crimson', alpha = 0.2, label='background $=' + str(sci_notation(baseline_val_openmc,3)) + '$'),
                    #Patch(facecolor='steelblue', alpha = 1, label='peak range'),
-                   Patch(facecolor='steelblue', alpha = 0.2, label='peak area $=' + str(sci_notation(peak_sum_val_data,3)) + '$'),
-                   Patch(facecolor='crimson', alpha = 0.2, label='peak area $=' + str(sci_notation(peak_sum_val_openmc,3)) + '$'),]
+                   Patch(facecolor='black', alpha = 0.2),#, label='peak area $=' + str(sci_notation(peak_sum_val_data,3)) + '$'),
+                   Patch(facecolor='crimson', alpha = 0.2)]#, label='peak area $=' + str(sci_notation(peak_sum_val_openmc,3)) + '$'),]
 plt.legend(handles = legend_elements, loc='upper right', prop={'size': 10})
 #plt.title(f"({est_peak_left} keV,{est_peak_right} keV)")
 #plt.grid(True)
