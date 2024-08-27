@@ -9,7 +9,7 @@ from openmc_eu152_0203_74 import energy_bins, sim_batch, sim_particle, tally_1, 
 from data_extract_eu152_0203_74 import isotope
 
 #extract tallies into pandas df
-sp = openmc.StatePoint(f"/statepoint.{sim_batch}.h5")
+sp = openmc.StatePoint(f"statepoint.{sim_batch}.h5")
 #sp = openmc.StatePoint(f"{source}" + f"/statepoint.20.1e6.h5")
 tally = sp.get_tally(name=f"{tally_1}")
 #chopping first entry because it is ridiculous
