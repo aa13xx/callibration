@@ -10,7 +10,7 @@ from functions import broad_spectrum, sci_notation, background, findpeakarea, pe
 
 renorm_broadened_spectrum = broad_spectrum(df_openmc.intensity.to_numpy(), energy, sum(df_openmc.intensity), fit_a, fit_b, fit_c)
 
-plt.figure(1)
+plt.figure(2)
 
 #plt.vlines(x=121.7817, color="red", ls =':', label="121.8 kev", ymin = 0, ymax=1e6)
 #plt.vlines(x=344.2785, color="red", ls =':', label="344.3 kev", ymin = 0, ymax=1e6)
@@ -37,8 +37,8 @@ plt.savefig(f"plots_{isotope}/" + f"compare.png")
 
 #plot 3 - peak compare
 ###344keV
-est_peak_left = peakfinder(df_data,300)[1][9][0]
-est_peak_right = peakfinder(df_data,300)[1][9][1]
+est_peak_left = peakfinder(df_data,300)[1][14][0]
+est_peak_right = peakfinder(df_data,300)[1][14][1]
 ###
 
 baseline_val_data = background(df_data, est_peak_left, est_peak_right)
@@ -52,7 +52,7 @@ peak_sum_val_openmc = findpeakarea(df_openmc, est_peak_left, est_peak_right)
 peak_left_openmc = peakleft(df_openmc, est_peak_left)
 peak_right_openmc = peakright(df_openmc, est_peak_right)
 
-plt.figure(2)
+plt.figure(3)
 plt.semilogy(df_data.energy, df_data.intensity, alpha=0.9, label="experimental", color="steelblue")
 plt.vlines(x=peak_left_data, color="steelblue", alpha= 1, ls =':', ymin = 0, ymax=1e6)
 plt.vlines(x=peak_right_data, color="steelblue", alpha= 1, ls =':', ymin = 0, ymax=1e6)
