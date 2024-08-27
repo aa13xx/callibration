@@ -64,9 +64,9 @@ plt.fill_between(x = df_data.energy, y1 = df_data.intensity, y2 = baseline_val_d
 
 
 plt.semilogy(df_openmc.energy, df_openmc.intensity, alpha=0.3, label="original simulation", color="black")
-plt.vlines(x=peak_left_openmc, color="crimson", alpha= 1, ls =':', ymin = 0, ymax=1e6)
-plt.vlines(x=peak_right_openmc, color="crimson", alpha= 1, ls =':', ymin = 0, ymax=1e6)
-plt.hlines(y=baseline_val_openmc, color="crimson", alpha= 0.5, ls =':', xmin = peak_left_win_data, xmax=peak_right_win_data)
+plt.vlines(x=peak_left_openmc, color="black", alpha= 1, ls =':', ymin = 0, ymax=1e6)
+plt.vlines(x=peak_right_openmc, color="black", alpha= 1, ls =':', ymin = 0, ymax=1e6)
+plt.hlines(y=baseline_val_openmc, color="black", alpha= 0.5, ls =':', xmin = peak_left_win_data, xmax=peak_right_win_data)
 plt.fill_between(x = df_openmc.energy, y1 = df_openmc.intensity, y2 = baseline_val_openmc,
         where = (peak_left_openmc <= df_openmc.energy)&(df_openmc.energy <= peak_right_openmc),
         color = "black", alpha = 0.1)
