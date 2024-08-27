@@ -20,8 +20,8 @@ plt.figure(2)
 #plt.vlines(x=1112.076, color="red", ls =':', label="1112 kev", ymin = 0, ymax=1e6)
 #plt.vlines(x=1408.013, color="red", ls =':', label="1408 kev", ymin = 0, ymax=1e6)
 
-plt.semilogy(df_openmc.energy, df_openmc.intensity, label="original simulation", color="crimson", alpha=0.2)
-plt.semilogy(df_data.energy, df_data.intensity, label="experimental", color="steelblue", alpha=1)
+plt.semilogy(df_openmc.energy, df_openmc.intensity, label="original simulation", color="crimson", alpha=0.9)
+plt.semilogy(df_data.energy, df_data.intensity, label="experimental", color="steelblue", alpha=0.9)
 #plt.semilogy(df_openmc.energy, renorm_broadened_spectrum, label="post processed simulation", color="crimson", alpha=0.5)
 
 plt.legend()
@@ -61,7 +61,7 @@ plt.fill_between(x = df_data.energy, y1 = df_data.intensity, y2 = baseline_val_d
         where = (peak_left_data <= df_data.energy)&(df_data.energy <= peak_right_data),
         color = "steelblue", alpha = 0.1)
 
-plt.semilogy(df_openmc.energy, df_openmc.intensity, alpha=0.3, label="simulation", color="crimson")
+plt.semilogy(df_openmc.energy, df_openmc.intensity, alpha=0.9, label="simulation", color="crimson")
 plt.vlines(x=peak_left_openmc, color="crimson", alpha= 1, ls =':', ymin = 0, ymax=1e6)
 plt.vlines(x=peak_right_openmc, color="crimson", alpha= 1, ls =':', ymin = 0, ymax=1e6)
 plt.hlines(y=baseline_val_openmc, color="crimson", alpha= 0.5, ls =':', xmin = peak_left_win_data, xmax=peak_right_win_data)
@@ -84,3 +84,4 @@ plt.title(f"{isotope} - Experimental Data vs OpenMC Simulation - ({est_peak_left
 #plt.grid(True)
 plt.minorticks_on()
 plt.tight_layout()
+plt.savefig(f"plots_{isotope}/" + f"post_processed_compare_peak.png")
