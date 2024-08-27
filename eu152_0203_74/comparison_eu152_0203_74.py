@@ -29,7 +29,7 @@ plt.legend()
 plt.xlim(0,1500)
 plt.xlabel('Energy [keV]')
 plt.ylabel('Intensity')
-plt.title(f"{isotope}")
+#plt.title(f"{isotope}")
 plt.minorticks_on()
 plt.grid(True)
 plt.tight_layout()
@@ -74,13 +74,13 @@ plt.ylim(1e1,1e5)
 plt.xlabel('Energy [keV]')
 plt.ylabel('Intensity')
 legend_elements = [#Patch(facecolor='steelblue', alpha = 1, label='data'),
-                   Patch(facecolor='steelblue', alpha = 0.2, label='background $=' + str(sci_notation(baseline_val_data,3)) + '$'),
-                   Patch(facecolor='crimson', alpha = 0.2, label='background $=' + str(sci_notation(baseline_val_openmc,3)) + '$'),
+                  #Patch(facecolor='steelblue', alpha = 0.2, label='background $=' + str(sci_notation(baseline_val_data,3)) + '$'),
+                   #Patch(facecolor='crimson', alpha = 0.2, label='background $=' + str(sci_notation(baseline_val_openmc,3)) + '$'),
                    #Patch(facecolor='steelblue', alpha = 1, label='peak range'),
                    Patch(facecolor='steelblue', alpha = 0.2, label='peak area $=' + str(sci_notation(peak_sum_val_data,3)) + '$'),
                    Patch(facecolor='crimson', alpha = 0.2, label='peak area $=' + str(sci_notation(peak_sum_val_openmc,3)) + '$'),]
-plt.legend(handles = legend_elements, loc='lower right', prop={'size': 10})
-plt.title(f"{isotope} - ({est_peak_left} keV,{est_peak_right} keV)")
+plt.legend(handles = legend_elements, loc='upper right', prop={'size': 10})
+#plt.title(f"({est_peak_left} keV,{est_peak_right} keV)")
 #plt.grid(True)
 plt.minorticks_on()
 plt.tight_layout()
