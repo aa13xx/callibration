@@ -3,9 +3,7 @@ import pandas
 import matplotlib.pyplot as plt
 from scipy.signal import find_peaks
 
-import sys
 #other file
-sys.path.insert(1, "/Users/a.l/Desktop/MSC/openmc/detector/")
 from functions import read_file, get_counts, get_live_time
 
 isotope = "eu152_0203_74"

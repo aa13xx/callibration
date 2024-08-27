@@ -6,7 +6,6 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Patch
 from scipy.optimize import curve_fit
 
-import sys
 #other files
 from data_extract_eu152_0703_14 import df_data, isotope, bin_no, energy_data
 from functions import FWHM, peakfinder
@@ -22,9 +21,6 @@ for i,j in identified_peak_range:
         peak_fwhm_arr.append(FWHM(df_data,i,j))
 
 peak_resolution_arr = peak_fwhm_arr / peak_energy_arr
-print(peak_energy_arr)
-print(peak_fwhm_arr)
-print(peak_resolution_arr)
 
 #curve fit to find the resolution function
 def resolution_fx(energy, a, b, c):

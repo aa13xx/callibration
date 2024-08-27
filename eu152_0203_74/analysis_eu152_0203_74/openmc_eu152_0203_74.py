@@ -40,8 +40,8 @@ mylar.add_element('O', 0.333025, 'wo')
 mylar.set_density('g/cm3', 1.4)
 
 materials = openmc.Materials([al, be, ge, mylar, pb])
-materials.cross_sections = "/Users/a.l/Desktop/MSC/openmc/detector/nuclearcx_lib/cross_sections.xml" #endfb-vii.1
-materials.export_to_xml(f"{isotope}" + "/materials.xml")
+materials.cross_sections = "nuclearcx_lib/cross_sections.xml" #endfb-vii.1
+materials.export_to_xml(f"materials.xml")
 
 #Geometry (cm)
 detector_radius = 2.465
@@ -147,7 +147,7 @@ vacuum_void_cell = openmc.Cell(region=vacuum_void_region)
 #universe
 universe = openmc.universe = openmc.Universe(cells=[detector_cell, al_case_o_cell, al_case_i_cell, almy_cap_cell, almy_cap_2_cell, be_cap_cell, lead_shield_cell_1, lead_shield_cell_2, vacuum_void_cell])
 geometry = openmc.Geometry(universe)
-geometry.export_to_xml(f"{isotope}" + "/geometry.xml")
+geometry.export_to_xml(f"geometry.xml")
 
 #plot
 color_assignment = {detector_cell : 'steelblue',
@@ -195,7 +195,7 @@ settings.verbosity = 7
 settings.material_cell_offsets = False
 #settings.statepoint_interval = 1
 settings.threads = 1
-settings.export_to_xml(f"{isotope}" + "/settings.xml")
+settings.export_to_xml(f"settings.xml")
 
 #getting eneregy bins from experimental data (convert kev to ev)
 first_energy_bin = energy_data[0] * 1000
@@ -215,7 +215,7 @@ tallies_tally_1 = openmc.Tally(name=tally_1)
 tallies_tally_1.scores = [tally_1_type]
 tallies_tally_1.filters = [detector_cell_filter, energy_filter]
 tallies.append(tallies_tally_1)
-tallies.export_to_xml(f"{isotope}" + "/tallies.xml")
+tallies.export_to_xml(f"tallies.xml")
 
 #incident tally
 #detector_tally_inc = openmc.Tally(name='flux')

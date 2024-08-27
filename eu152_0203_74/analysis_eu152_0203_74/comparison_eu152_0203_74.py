@@ -2,12 +2,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.patches import Patch
 
-import sys
 #other file
 from resolution_eu152_0203_74 import fit_a, fit_b, fit_c
 from openmc_extract_eu152_0203_74 import df_openmc, energy
 from data_extract_eu152_0203_74 import df_data, isotope
-sys.path.insert(1, "/Users/a.l/Desktop/MSC/openmc/detector/")
 from functions import broad_spectrum, sci_notation, background, findpeakarea, peakfinder, peakleftwin, peakrightwin, peakleft, peakright
 
 renorm_broadened_spectrum = broad_spectrum(df_openmc.intensity.to_numpy(), energy, sum(df_openmc.intensity), fit_a, fit_b, fit_c)
@@ -24,18 +22,18 @@ plt.figure(1)
 
 plt.semilogy(df_openmc.energy, df_openmc.intensity, label="original simulation", color="crimson", alpha=0.2)
 plt.semilogy(df_data.energy, df_data.intensity, label="experimental", color="steelblue", alpha=1)
-plt.semilogy(df_openmc.energy, renorm_broadened_spectrum, label="post processed simulation", color="crimson", alpha=0.5)
+#plt.semilogy(df_openmc.energy, renorm_broadened_spectrum, label="post processed simulation", color="crimson", alpha=0.5)
 
 plt.legend()
 #plt.xlim(955,972)
 plt.xlim(0,1500)
 plt.xlabel('Energy [keV]')
 plt.ylabel('Intensity')
-plt.title(f"Comparison of post processed simulation and experimental results- {isotope}")
+plt.title(f"{isotope}")
 plt.minorticks_on()
 plt.grid(True)
 plt.tight_layout()
-plt.savefig(f"{isotope}/plots_{isotope}/" + f"post_processed_compare.png")
+plt.savefig(f"plots_{isotope}/" + f"compare.png")
 
 #plot 3 - peak compare
 ###344keV
@@ -82,9 +80,9 @@ legend_elements = [#Patch(facecolor='steelblue', alpha = 1, label='data'),
                    Patch(facecolor='steelblue', alpha = 0.2, label='peak area $=' + str(sci_notation(peak_sum_val_data,3)) + '$'),
                    Patch(facecolor='crimson', alpha = 0.2, label='peak area $=' + str(sci_notation(peak_sum_val_openmc,3)) + '$'),]
 plt.legend(handles = legend_elements, loc='lower right', prop={'size': 10})
-plt.title(f"{isotope} - Experimental Data vs OpenMC Simulation - ({est_peak_left} keV,{est_peak_right} keV)")
+plt.title(f"{isotope} ({est_peak_left} keV,{est_peak_right} keV)")
 #plt.grid(True)
 plt.minorticks_on()
 plt.tight_layout()
 
-plt.savefig(f"{isotope}/plots_{isotope}/" + f"compare_peak_{est_peak_left}kev.png")
+plt.savefig(f"plots_{isotope}/" + f"compare_peak.png")

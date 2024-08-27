@@ -6,10 +6,8 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Patch
 from scipy.optimize import curve_fit
 
-import sys
 #other files
 from data_extract_eu152_0203_74 import df_data, isotope, bin_no, energy_data
-sys.path.insert(1, "/Users/a.l/Desktop/MSC/openmc/detector/")
 from functions import FWHM, peakfinder
 
 #extract peakfinder results (peak energy, peak energy range)
@@ -27,6 +25,8 @@ def resolution_fx(energy, a, b, c):
     fwhm = a + (b * ((energy + (c * (energy ** 2)))**0.5))
     return(fwhm)
 
+peak_resolution_arr = peak_fwhm_arr / peak_energy_arr
+
 parameters, covariance = curve_fit(resolution_fx, peak_energy_arr, peak_fwhm_arr)
 #parameters in the gaussian function
 fit_a = parameters[0]
@@ -35,6 +35,7 @@ fit_c = parameters[2]
 #print(fit_a)
 #print(fit_b)
 #print(fit_c)
+
 
 #plotting the resolution curve vs fwhm graph
 x = np.linspace(energy_data[0], energy_data[bin_no - 1], bin_no)
@@ -46,8 +47,19 @@ plt.plot(x, y, color="red")
 plt.xlim(0,1650)
 plt.xlabel('Energy [keV]')
 plt.ylabel('Full Width Half Maximum [keV]')
-plt.title("Detector Resolution Obtained from Experimental Data")
+plt.title(f"{isotope}")
 plt.grid(True)
 plt.minorticks_on()
 plt.tight_layout()
-plt.savefig(f"{isotope}/plots_{isotope}" + f"/exp_detector_resolution.png")
+plt.savefig(f"plots_{isotope}" + f"/exp_detector_fwhm.png")
+
+plt.figure(1)
+plt.plot(peak_energy_arr, peak_resolution_arr, color="steelblue")
+plt.xlim(0,1650)
+plt.xlabel('Energy [keV]')
+plt.ylabel('Resolution')
+plt.title(f"{isotope}")
+plt.grid(True)
+plt.minorticks_on()
+plt.tight_layout()
+plt.savefig(f"plots_{isotope}" + f"/exp_detector_resolution.png")
