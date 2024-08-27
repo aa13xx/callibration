@@ -22,7 +22,7 @@ plt.figure(2)
 
 plt.semilogy(df_openmc.energy, df_openmc.intensity, label="original simulation", color="black", alpha=0.3)
 #plt.semilogy(df_data.energy, df_data.intensity, label="experiment", color="steelblue", alpha=0.9)
-plt.semilogy(df_openmc.energy, renorm_broadened_spectrum, label="processed simulation", color="crimson", alpha=0.4)
+plt.semilogy(df_openmc.energy, renorm_broadened_spectrum, label="processed simulation", color="crimson", alpha=0.5)
 
 plt.legend()
 #plt.xlim(955,972)
