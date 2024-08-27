@@ -21,8 +21,8 @@ plt.figure(2)
 #plt.vlines(x=1408.013, color="red", ls =':', label="1408 kev", ymin = 0, ymax=1e6)
 
 #plt.semilogy(df_openmc.energy, df_openmc.intensity, label="original simulation", color="black", alpha=0.3)
-plt.semilogy(df_data.energy, df_data.intensity, label="experimental", color="steelblue", alpha=0.8)
-plt.semilogy(df_openmc.energy, renorm_broadened_spectrum, label="processed simulation", color="crimson", alpha=0.8)
+plt.semilogy(df_data.energy, df_data.intensity, label="experiment", color="steelblue", alpha=0.8)
+plt.semilogy(df_openmc.energy, renorm_broadened_spectrum, label="processed simulation", color="crimson", alpha=0.4)
 
 plt.legend()
 #plt.xlim(955,972)
@@ -54,7 +54,7 @@ peak_right_openmc = peakright(df_openmc, est_peak_right)
 
 plt.figure(3)
 
-plt.semilogy(df_data.energy, df_data.intensity, alpha=0.8, label="experimental", color="steelblue")
+plt.semilogy(df_data.energy, df_data.intensity, alpha=0.8, label="experiment", color="steelblue")
 plt.vlines(x=peak_left_data, color="steelblue", alpha= 1, ls =':', ymin = 0, ymax=1e6)
 plt.vlines(x=peak_right_data, color="steelblue", alpha= 1, ls =':', ymin = 0, ymax=1e6)
 plt.hlines(y=baseline_val_data, color="steelblue", alpha= 0.5, ls =':', xmin = peak_left_win_data, xmax=peak_right_win_data)
