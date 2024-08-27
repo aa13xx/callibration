@@ -20,9 +20,9 @@ plt.figure(2)
 #plt.vlines(x=1112.076, color="red", ls =':', label="1112 kev", ymin = 0, ymax=1e6)
 #plt.vlines(x=1408.013, color="red", ls =':', label="1408 kev", ymin = 0, ymax=1e6)
 
-plt.semilogy(df_openmc.energy, df_openmc.intensity, label="original simulation", color="black", alpha=0.8)
+plt.semilogy(df_openmc.energy, df_openmc.intensity, label="original simulation", color="black", alpha=0.3)
 #plt.semilogy(df_data.energy, df_data.intensity, label="experimental", color="steelblue", alpha=0.8)
-plt.semilogy(df_openmc.energy, renorm_broadened_spectrum, label="post processed simulation", color="crimson", alpha=0.8)
+plt.semilogy(df_openmc.energy, renorm_broadened_spectrum, label="processed simulation", color="crimson", alpha=0.8)
 
 plt.legend()
 #plt.xlim(955,972)
@@ -87,8 +87,8 @@ legend_elements = [#Patch(facecolor='steelblue', alpha = 1, label='data'),
                   #Patch(facecolor='steelblue', alpha = 0.2, label='background $=' + str(sci_notation(baseline_val_data,3)) + '$'),
                    #Patch(facecolor='crimson', alpha = 0.2, label='background $=' + str(sci_notation(baseline_val_openmc,3)) + '$'),
                    #Patch(facecolor='steelblue', alpha = 1, label='peak range'),
-                   Patch(facecolor='black', alpha = 0.2),#, label='peak area $=' + str(sci_notation(peak_sum_val_data,3)) + '$'),
-                   Patch(facecolor='crimson', alpha = 0.2)]#, label='peak area $=' + str(sci_notation(peak_sum_val_openmc,3)) + '$'),]
+                   Patch(facecolor='black', alpha = 0.3, label = "original simulation"),#, label='peak area $=' + str(sci_notation(peak_sum_val_data,3)) + '$'),
+                   Patch(facecolor='crimson', alpha = 0.8, label = "processed simulation")]#, label='peak area $=' + str(sci_notation(peak_sum_val_openmc,3)) + '$'),]
 plt.legend(handles = legend_elements, loc='upper right', prop={'size': 10})
 #plt.title(f"({est_peak_left} keV,{est_peak_right} keV)")
 #plt.grid(True)
