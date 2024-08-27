@@ -90,7 +90,7 @@ legend_elements = [#Patch(facecolor='steelblue', alpha = 1, label='data'),
                    Patch(facecolor='steelblue', alpha = 0.3, label = "experiment \n$=" + str(sci_notation(peak_sum_val_data,3)) + '$'),
                    Patch(facecolor='black', alpha = 0.3, label = "original simulation \n$ =" + str(sci_notation(peak_sum_val_openmc,3)) + '$'),]
 plt.legend(handles = legend_elements, loc='upper right', prop={'size': 10})
-plt.gca().add_artist(legend1)
+#plt.gca().add_artist(legend1)
 #plt.title(f"({est_peak_left} keV,{est_peak_right} keV)")
 #plt.grid(True)
 plt.minorticks_on()
