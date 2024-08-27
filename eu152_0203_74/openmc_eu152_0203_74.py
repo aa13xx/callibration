@@ -223,4 +223,4 @@ tallies.export_to_xml(f"tallies.xml")
 #detector_tally_inc.filters = [detector_cell_filter, energy_filter]
 #tallies.append(detector_tally_inc)
 
-
+openmc.run()
