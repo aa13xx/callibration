@@ -42,12 +42,19 @@ x = np.linspace(energy_data[0], energy_data[bin_no - 1], bin_no)
 y = resolution_fx(x, fit_a, fit_b, fit_c)
 
 plt.figure(0)
-plt.plot(peak_energy_arr, peak_fwhm_arr, color="steelblue")
-plt.plot(x, y, color="red")
+plt.scatter(peak_energy_arr, peak_fwhm_arr, color="steelblue")
+plt.plot(x, y, color="crimson", alpha=1)
 plt.xlim(0,1650)
 plt.xlabel('Energy [keV]')
 plt.ylabel('Full Width Half Maximum [keV]')
-plt.title(f"{isotope}")
+#plt.title(f"{isotope}")
+legend_elements = [#Patch(facecolor='steelblue', alpha = 1, label='data'),
+                  #Patch(facecolor='steelblue', alpha = 0.2, label='background $=' + str(sci_notation(baseline_val_data,3)) + '$'),
+                   #Patch(facecolor='crimson', alpha = 0.2, label='background $=' + str(sci_notation(baseline_val_openmc,3)) + '$'),
+                   #Patch(facecolor='steelblue', alpha = 1, label='peak range'),
+                   #Patch(facecolor='steelblue', alpha = 0.2, label='peak area $=' + str(sci_notation(peak_sum_val_data,3)) + '$'),
+                   Patch(facecolor='crimson', alpha = 1, label='curve fit'),]
+plt.legend(handles = legend_elements, loc='lower right', prop={'size': 10})
 plt.grid(True)
 plt.minorticks_on()
 plt.tight_layout()
@@ -58,7 +65,7 @@ plt.plot(peak_energy_arr, peak_resolution_arr, color="steelblue")
 plt.xlim(0,1650)
 plt.xlabel('Energy [keV]')
 plt.ylabel('Resolution')
-plt.title(f"{isotope}")
+#plt.title(f"{isotope}")
 plt.grid(True)
 plt.minorticks_on()
 plt.tight_layout()
